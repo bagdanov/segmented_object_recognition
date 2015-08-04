@@ -45,13 +45,13 @@ def gridCN(im, grid, patch_size, hard_assign=True):
     patches = np.asarray(patches, dtype=np.float32)
     return patches / patches.sum(1)[:, None] if hard_assign else patches
 
-def extract_masked_cns(imname, maskname, stride=5, patch_size=10):
+def extract_masked_cns(im, mask, stride=5, patch_size=10):
     """Extracts local color name descriptors from image foreground."""
     # Check if images passed as fnames (or ndarrays).
-    if isinstance(imname, str):
-        im = pl.imread(imname) * 255.0
-    if isinstance(maskname, str):
-        mask = pl.imread(maskname)
+    if isinstance(im, str):
+        im = pl.imread(im) * 255.0
+    if isinstance(mask, str):
+        mask = pl.imread(mask)
 
     # Make the local patch grid, mask, and make (x, y) pairs.
     grid = np.meshgrid(np.arange(0, im.shape[1], stride),
@@ -87,7 +87,7 @@ def extract_all_class_features(dataset, n_jobs=1, stride=5, patch_size=10):
         print 'Extracting masked CNs from class {}'.format(cls)
         hists = Parallel(n_jobs=n_jobs)(delayed(extract_masked_cns)(imname, maskname) for (imname, maskname) in dataset.get_class_images(cls))
         hists = np.vstack(hists)
-        labels.append(label * np.ones((sum(map(len, hists)),), dtype=np.float32))
+        labels.append(label * np.ones((len(hists),), dtype=np.float32))
         cns.append(hists.astype(np.float32))
     
     # Stack lists in numpy arrays.
