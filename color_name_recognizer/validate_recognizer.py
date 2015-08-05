@@ -1,3 +1,30 @@
+#!/usr/bin/env python
+#
+# Script to perform leave-one-out and random split cross-validation on
+# a trained classifier. Note that the trained classifier is NOT used
+# for testing (it can't be, as data must be held out), so a new
+# classifier is trained and evalated for each split. HOWEVER, you MUST
+# first train a base classifier using the 'train_classifier.py' script
+# in order to fix the feature extraction parameters.
+#
+# Run it like this:
+#
+#  ./validate_recognizer.py --n_jobs=4 --trials=10 --splitprop=0.5 dataset_jordi/
+#
+# Note that this script supports multicore parallelism through the
+# 'n_jobs' command-line argument.
+#
+# Command line arguments:
+#  --help                  show help message and exit
+#  --n_jobs n_jobs         number of parallel jobs for feature extraction
+#  --trials trials         number of trials for random split crossvalidation
+#  --splitprop splitprop   proportion of data to withold as training
+#  <datadir>               directory where dataset is
+#
+# See:
+#  train_recognizer.py - for a script that trains a recognizer on a dataset.
+#
+
 import os
 import sys
 import utils
