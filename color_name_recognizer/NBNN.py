@@ -1,6 +1,3 @@
-import numpy as np
-from sklearn.neighbors import NearestNeighbors
-
 #
 # Simple class implementing Naive Bayes Nearest Neighbor
 # classification algorithm. The default algorithm uses local features
@@ -9,12 +6,14 @@ from sklearn.neighbors import NearestNeighbors
 #  Boiman, Oren, Eli Shechtman, and Michal Irani. "In defense of
 #  nearest-neighbor based image classification." CVPR 2008.
 #
-# Andrew D. Bagdanov
-# 27/07/2015
+# TODO: Docstrings for class and methods
 #
+
+import numpy as np
+from sklearn.neighbors import NearestNeighbors
+
 class NBNN:
     # Constructor:
-    #  boiman  - whether to use the Boiman NBNN variant.
     #  verbose - spits out diagnostic information.
     def __init__(self, verbose=False):
         self._verbose = verbose
