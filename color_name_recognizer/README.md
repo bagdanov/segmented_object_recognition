@@ -35,3 +35,30 @@ trained recognizer on a held-out test image:
 
 See the scripts themselves for documentation on parameters and other
 options.
+
+## Components
+
+This recognizer module consists of a number of files.
+
+Python modules:
+* `CNRecognizer.py`: a class implementing the recognizer logic
+  (basically a wrapper around Dataset and NBNN functionalities).
+* `NBNN.py`: a class which implements the Naive Bayes Nearest Neighbor
+  classifier (learns a kd-tree over training data for fast nearest
+  neighbor calculation, prediction done by voting).
+* `utils.py`: random useful crap.
+* `dataset.py`: wraps access to files and classes in a dataset directory.
+* `PythonCN.py`: implements local colorname histogram feature
+  extraction.
+
+Executable scripts:
+* `train_recognizer.py`: train a recognizer on provided dataset directory.
+* `validate_recognizer.py`: leave-one-out and random split validation
+  of trained classifier.
+* `run_recognizer.py`: example script showing how to run trained classifier.
+
+Other files:
+* `w2c.mat`: matrix coding mapping of quantized RGB values to
+  colornames.
+* `rubiks_asus_test_mask.png`: test object mask image.
+* `rubiks_asus_test_image.png`: test object RGB image.
