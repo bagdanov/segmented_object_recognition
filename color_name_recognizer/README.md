@@ -18,10 +18,20 @@ over local histograms of colorname descriptors as described in this paper:
 
 ## Running the pipeline
 
-The simplest way to run the pipeline with default parameters is to first
+The simplest way to run the pipeline with default parameters is to
+first train the recognizer with:
 
-`./train_recognizer.py dataset_jordi/
- ./validate_recognizer.py dataset_jordi/
-`
+`./train_recognizer.py dataset_jordi/`
 
+and then run the validation script (which performs leave-one-out and
+random split cross validation to estimate the accuracy of the trained recognizer):
+ 
+`./validate_recognizer.py dataset_jordi/`
 
+If you like, you can also run the simple example script which runs the
+trained recognizer on a held-out test image:
+
+`./run_recognizer.py dataset_jordi/`
+
+See the scripts themselves for documentation on parameters and other
+options.
