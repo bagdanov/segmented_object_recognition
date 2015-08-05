@@ -16,6 +16,13 @@ over local histograms of colorname descriptors as described in this paper:
 > Larlus. "Learning color names for real-world applications." IEEE
 > Transactions on Image Processing, 2009.
 
+## Dependencies
+
+You will need a modern installation of Python 2.7 (it should work on
+3.X as well). Other than that, `numpy` and `scikit-learn` should be
+the only external dependencies. If you are running an Anaconda
+installation, you should have more than everything you need.
+
 ## Running the pipeline
 
 The simplest way to run the pipeline with default parameters is to
