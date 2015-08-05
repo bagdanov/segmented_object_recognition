@@ -62,3 +62,20 @@ Other files:
   colornames.
 * `rubiks_asus_test_mask.png`: test object mask image.
 * `rubiks_asus_test_image.png`: test object RGB image.
+
+## TODO
+
+See individual files for specific TODOs. There are lots of ways this
+pipeline can be improved. Here are some big ones:
+
+* Factor out Recognizer interface from CNRecognizer into a recognizer
+  base class. This will help building new recognizers in the future.
+* Better control of access to images and classes in the Dataset
+  interface. Right now the Dataset class does very little except
+  deliver lists of (images, mask) pairs. It could do better, and maybe
+  the split logic from `validate_recognizer.py` could be moved into
+  it.
+* Overall global consistency. Some documentation is in docstrings,
+  some is in comments. Some classes use methods to access private
+  attributes, others don't. These things should be made more
+  consistent across all modules.
