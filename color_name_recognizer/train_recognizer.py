@@ -8,12 +8,21 @@
 #
 #  ./train_recognizer.py --n_jobs=4 --patch_size=10 --stride=5  dataset_jordi/
 #
-# The trained model is serialized to the <datadir>/models directory.
+# The trained model is serialized to the <datadir>/models
+# directory. Note that this script supports multicore parallelism
+# through the 'n_jobs' command-line argument.
+#
+# Command line arguments:
+#  --help                   show help message and exit
+#  --patch_size patch_size  size of local patches
+#  --n_jobs n_jobs          number of parallel jobs for feature extraction
+#  --stride stride          stride of sliding window for patch extraction
+#  <datadir>                the directory where the dataset is.
 #
 # See:
-#
 #  CNRecognizer.py - for the recognizer logic itself.
 #  dataset.py - for the expected layout of the <datadir> directory.
+#  validate_recognizer.py - for a script that performs cross validation.
 #
 
 import argparse
