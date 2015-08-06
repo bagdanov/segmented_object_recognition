@@ -71,4 +71,6 @@ class CNRecognizer:
         
     def serialize(self):
         '''Pickle the trained recognizer to the models/ directory of the dataset.'''
+        if not os.path.exists(self._datadir + '/models/'):
+            os.mkdir(self._datadir + '/models/')
         pickle(self, self._datadir + '/models/' + self._modelname)
